@@ -99,12 +99,18 @@ def restore_persisted_data(api):
 def get_file_path(api, create=False):
     if api not in API_FILE_PATHS:
         API_FILE_PATHS[api] = False
+        print(str(API_FILE_PATHS))
         if not DATA_DIR:
             return False
         file_path = API_FILE_PATTERN.format(data_dir=DATA_DIR, api=api)
+        print(file_path)
         if create and not os.path.exists(file_path):
+            print('creating')
             with open(file_path, 'a'):
                 os.utime(file_path, None)
+                print('done writing')
         if os.path.exists(file_path):
             API_FILE_PATHS[api] = file_path
+            print(API_FILE_PATHS)
+        print(API_FILE_PATHS)
     return API_FILE_PATHS.get(api)
