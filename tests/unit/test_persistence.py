@@ -17,12 +17,12 @@ class TestPersistence(unittest.TestCase):
     @classmethod
     def setup_class(cls):
         cls.temp_dir = TemporaryDirectory()
-        persistence.DATA_DIR = cls.temp_dir.name
+        #persistence.DATA_DIR = cls.temp_dir.name
 
     @classmethod
     def teardown_class(cls):
         cls.temp_dir.cleanup()
-        persistence.DATA_DIR = None
+        #persistence.DATA_DIR = None
 
     def test_should_record(self):
         assert_true(persistence.should_record('s3', 'PUT', None, None, None))
