@@ -101,7 +101,7 @@ def get_file_path(api, create=False):
         API_FILE_PATHS[api] = False
         print(str(API_FILE_PATHS))
         if not DATA_DIR:
-            return False
+            raise FileNotFoundError('No DATA_DIR defined for persistence')
         file_path = API_FILE_PATTERN.format(data_dir=DATA_DIR, api=api)
         print(file_path)
         if create and not os.path.exists(file_path):
